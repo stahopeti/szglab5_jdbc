@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- This JavaFX skeleton is provided for the Databases Laboratory course. 
+	Its structure should provide a general guideline for the students. As suggested 
+	by the JavaFX model, we'll have a GUI/view (this one), a controller class 
+	and a model. -->
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<!-- All the GUI components -->
+<!-- Root (vertical box) layout -->
+
+<VBox fx:id="rootLayout" alignment="CENTER" minHeight="460" minWidth="600" prefHeight="460" prefWidth="600" spacing="10" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
+
+	<!-- Set padding values -->
+	<padding>
+		<Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+	</padding>
+
+	<!-- Connection panel -->
+	<HBox fx:id="connectionLayout" alignment="CENTER" spacing="10">
+
+		<!-- Username field -->
+		<TextField fx:id="usernameField" maxHeight="27" maxWidth="200" minHeight="27" minWidth="100" onAction="#connectEventHandler" prefHeight="27" prefWidth="150" text="h63rhm" />
+
+		<!-- Password field -->
+		<TextField fx:id="passwordField" maxHeight="27" maxWidth="200" minHeight="27" minWidth="100" onAction="#connectEventHandler" prefHeight="27" prefWidth="150" text="H54321" />
+
+		<!-- Connect button -->
+		<Button fx:id="connectButton" onAction="#connectEventHandler" prefWidth="80" text="Connect" />
+
+		<!-- Label to show the connection status -->
+		<Label fx:id="connectionStateLabel" minHeight="17" minWidth="200" prefHeight="17" prefWidth="200" />
+
+	</HBox>
+
+	<!-- Tabbed panel -->
+	<TabPane>
+		<tabs>
+			<!-- Search tab -->
+			<Tab fx:id="searchTab" closable="False" text=" Search ">
+
+				<!-- Search panel -->
+				<VBox spacing="10">
+					<padding>
+						<Insets bottom="10" left="0" right="0" top="10.0" />
+					</padding>
+
+					<!-- Search input panel -->
+					<VBox>
+						<HBox alignment="CENTER" spacing="10">
+							<!-- Search button -->
+							<Button onAction="#listEventHandler" text="List places" />
+						</HBox>
+						<HBox alignment="CENTER" spacing="10">
+                     <Label text="Search by name:" />
+							<!-- Search keyword field -->
+							<TextField fx:id="searchByNameTextField" onAction="#searchEventHandler" HBox.hgrow="ALWAYS" />
+							<!-- Search button -->
+							<Button onAction="#searchEventHandler" text="Search" />
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
+						</HBox>
+					</VBox>
+					<!-- Search table (scrollable by default) -->
+					<TableView fx:id="searchTable" editable="false">
+						<columns>
+							<!-- TODO: insert columns for showing result -->
+							<TableColumn fx:id="nameColumn" text="Name" />
+							<TableColumn fx:id="addressColumn" text="Address" />
+							<TableColumn fx:id="phoneColumn" text="Phone" />
+						</columns>
+					</TableView>
+
+				</VBox>
+
+			</Tab>
+         <Tab text="New Person">
+           <content>
+             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <children>
+                     <GridPane layoutX="122.0" layoutY="75.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                       <columnConstraints>
+                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                       </columnConstraints>
+                       <rowConstraints>
+                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                       </rowConstraints>
+                        <children>
+                           <Label text="ID" />
+                           <Label text="Name" GridPane.rowIndex="1" />
+                           <Label text="Address" GridPane.rowIndex="2" />
+                           <Label text="Phone" GridPane.rowIndex="3" />
+                           <Label text="Income" GridPane.rowIndex="4" />
+                           <Label text="Hobby" GridPane.rowIndex="5" />
+                           <TextField fx:id="newPersonID" GridPane.columnIndex="1" />
+                           <TextField fx:id="newPersonName" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                           <TextField fx:id="newPersonAddress" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                           <TextField fx:id="newPersonPhone" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                           <TextField fx:id="newPersonIncome" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                           <TextField fx:id="newPersonHobby" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                           <TextField fx:id="newPersonFavouriteMovie" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                           <Label text="Favourite movie" GridPane.rowIndex="6" />
+                           <Button mnemonicParsing="false" onAction="#addPersonEventHandler" text="Add" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="7" />
+                        </children>
+                     </GridPane>
+                  </children>
+               </AnchorPane>
+           </content>
+         </Tab>
+
+			<!-- !TODO: This is the place you should modify the tabs, you must review 
+				this -->
+
+			<Tab fx:id="editTab" closable="False" text=" Edit ">
+				<GridPane hgap="10" vgap="10">
+					<Label GridPane.columnIndex="0" GridPane.rowIndex="1">
+						Sample TextBox:
+					</Label>
+					<TextField fx:id="idTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+					<Label GridPane.columnIndex="0" GridPane.rowIndex="2">
+						Sample ComboBox:
+					</Label>
+					<ComboBox fx:id="sampleCombo" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+					<HBox spacing="10" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="3">
+						<Button fx:id="commitBtn" disable="true" onAction="#commitEventHandler" text="Commit" />
+						<Button onAction="#editEventHandler" text="Edit" />
+					</HBox>
+               <columnConstraints>
+                  <ColumnConstraints />
+                  <ColumnConstraints />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints />
+               </rowConstraints>
+
+				</GridPane>
+
+			</Tab>
+
+			<Tab closable="False" text=" Statistics">
+
+				<!-- Search panel -->
+				<VBox spacing="10">
+					<padding>
+						<Insets bottom="10" left="0" right="0" top="10.0" />
+					</padding>
+
+
+					<HBox alignment="CENTER" spacing="10">
+
+						<Button onAction="#statisticsEventHandler" text="statistics" />
+
+					</HBox>
+
+					<TableView fx:id="statisticsTable" editable="false">
+						<columns>
+						<!-- TODO: add columns -->
+						</columns>
+					</TableView>
+
+				</VBox>
+
+			</Tab>
+
+		</tabs>
+	</TabPane>
+
+</VBox>
